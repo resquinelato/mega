@@ -14,6 +14,7 @@ Changelog
 """
 
 from bottle import default_app, route
+from main import Main
 
 @route('/')
 def hello_world():
@@ -22,6 +23,11 @@ def hello_world():
 @route('/oi')
 def oi_mundo():
     return 'Tutorial Dois - Ensaiando uma nova rota'
+
+@route('/vs')
+def vs_mundo():
+    """Roteia o caminho /vs para retornar a versão do sistema."""
+    return 'Tutorial Dois - Versão do sistema: {}'.format(Main().get_versao())
 
 application = default_app()
 
