@@ -3,12 +3,26 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Tutorial Dois's documentation!
-=========================================
+Bem vindo ao Tutorial Dois de documentação!
+===========================================
+
+Subtítulo importate
+===================
+
+Um texto muito difícil de ser compreendido::
+
+    print "olá mundo!"
+    >> olá!
+
+Guia:
+^^^^^^^
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Conteúdo:
+
+   license
+   help
 
 Modulo Main
 -----------
@@ -17,10 +31,10 @@ Modulo Main
    Só gera a versão.
 
 .. automodule:: main
-    :members:
-    :undoc-members:
-    :platform: Web
-    :synopsis: Gera versão
+   :members:
+   :undoc-members:
+   :platform: Web
+   :synopsis: Gera versão
 
 Modulo Gerenciador Http
 ------------------------
@@ -29,11 +43,10 @@ Modulo Gerenciador Http
 :/doc: mostra a documentação
 
 .. automodule:: bottle_app
-    :members:
-    :undoc-members:
-    :platform: Web
-    :synopsis: Gerenciador http.
-
+   :members:
+   :undoc-members:
+   :platform: Web
+   :synopsis: Gerenciador http.
 
 Indices and tables
 ==================
