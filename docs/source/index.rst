@@ -20,33 +20,11 @@ Guia:
 .. toctree::
    :maxdepth: 2
    :caption: Conteúdo:
-
+   
+   quarto
+   vitollino
    license
    help
-
-Modulo Vitollino
-----------------
-
-.. note::
-   Engenho de jogos do Superpython
-
-.. automodule:: vitollino.main
-   :members:
-   :undoc-members:
-   :platform: Web
-   :synopsis: Engenho de Jogos
-
-Modulo Quarto
--------------
-
-.. note::
-   Jogo do Quarto traduzido do Superpython.
-
-.. automodule:: quarto
-   :members:
-   :undoc-members:
-   :platform: Web
-   :synopsis: Jogo do quarto.
 
 Modulo Main
 -----------
