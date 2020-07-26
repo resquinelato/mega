@@ -13,13 +13,13 @@ Changelog
         Adiciona o gerencidor de comandos http via Bottle
 """
 
-from bottle import default_app, route
+from bottle import default_app, route, static_file
 from main import Main
-from bottle import static_file
+
 
 @route('/')
 def hello_world():
-    return 'Tutorial Dois - Aprendendo Git e Botlle'
+    return static_file('index.html', root='/home/resquinelato/dev/mega/src/', mimetype='text/html')
 
 @route('/oi')
 def oi_mundo():
@@ -29,6 +29,10 @@ def oi_mundo():
 def vs_mundo():
     """Roteia o caminho /vs para retornar a versão do sistema."""
     return 'Tutorial Dois - Versão do sistema: {}'.format(Main().get_versao())
+
+@route('/<filename:re:.*\.py>')
+def py_mundo(filename):
+    return static_file(filename, root='/home/resquinelato/dev/mega/src/', mimetype='text/python')
 
 @route('/doc/<filename:re:.*\.html>')
 def doc_mundo(filename):
