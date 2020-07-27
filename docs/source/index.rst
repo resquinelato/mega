@@ -21,6 +21,7 @@ Guia:
    :maxdepth: 2
    :caption: Conteúdo:
    
+   lab
    quarto
    vitollino
    license
