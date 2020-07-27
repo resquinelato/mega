@@ -93,7 +93,7 @@ Adicione o seguinte script de rota:
 <
 @route('/<filename:re:.*\.py>')
 def py_mundo(filename):
-    return static_file(filename, root='/home/resquinelato/dev/mega/src/', mimetype='text/python')
+    return static_file(filename, root='/home/usuario/dev/mega/src/', mimetype='text/python')
 >
 - A página web é atualizada pelo /webapps do pythonanywhere.
 Verifica que a rota apresenta o mesmo layout, porém o console retorna problemas
