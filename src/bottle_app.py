@@ -19,7 +19,7 @@ from main import Main
 
 @route('/')
 def hello_world():
-    """Roteia o ensaio o jogo do quarto.
+    """Roteia o jogo do quarto.
     """
     return static_file('index.html', root='/home/resquinelato/dev/mega/src/', mimetype='text/html')
 
