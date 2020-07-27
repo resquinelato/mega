@@ -1,0 +1,191 @@
+   Aula 3 - Importar e documentar um jogo do superpython - Via terminal
+
+Nota: os ítens menor e igual (<dentro>) são lidos apenas o que está dentro
+
+Para o códio nesse repositório, usuario = resquinelato
+
+- Resumo simples de comados vi https://aurelio.net/curso/material/vim-ref.html>
+   Abrir arquivo <vi arquivo.txt <ENTER>>
+   Sai do VI <:q>
+   Entra no modo de Inserção <i>
+   Grava arquivo com o nome 'abc' <:r abc>
+   Insere o conteúdo do arquivo 'abc' <:r abc>
+   Apaga até o próximo ponto <df.> <df,>
+   Copia a linha inteira <yy> <5yy>
+   Apaga linha <dd> <5dd>
+
+
+  :Importação do jogo e do módulo:
+
+
+- No dir <cd /usuario/dev/> clonar o repositório kwarwp/_spy/
+<cp -r https://github.com/kwarwp/_spy.git>
+Copiar a biblioteca vitolino para a execução dos jogos em superputhon.
+
+- No dir <cd /usuario/dev/> clonar o repositório kwarwp/patricia/
+<cp -r https://github.com/kwarwp/patricia.git>
+Copiar o repositório contendo os jogos desenvolvidos.
+
+- No dir <cd /usuario/dev/mega/src/> copiar a bilioteca vittolino
+<cp ../../_spy/vitollino/ .>
+
+- No dir <cd /usuario/dev/mega/src/> copiar o jogo desenvolvido
+<cp ../../patricia/adda/quarto.py .>
+
+- Abra o arquivo <cd /usuario/dev/mega/src/quarto.py>
+Altere a localização de importação do main do vitollino de <_spy.vitollino.main>
+para <vitollino.main>
+
+
+- Crie o arquivo <touch /usuario/dev/mega/src/index.html>
+Gerar um arquivo <index.html> para a leitura da biblioteca do superython e a
+montagem do jogo em uma página web.
+- Abra o arquivo <touch /usuario/dev/mega/src/index.html>
+Edite com os seguintes prâmetros:
+<
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SuperPython Jogo do Quarto</title>
+    <!-- stylesheets -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon"/>
+    <script type="text/javascript" src="https://cdn.rawgit.com/brython-dev/brython/3.8.0/www/src/brython.js"></script>
+</head>
+<body onload="brython()" bgcolor="black">
+<script type="text/python">
+    from quarto import JogoDoQuarto as jogo
+    jogo().vai()
+</script>
+<div id="pydiv"></div>
+</body>
+</html>
+>
+O metaname retorna o ajuste do programa a tela do usuário;
+A href é a imagem símbolo do site;
+O src é a localização do Brython que faz a conversção entre javascrip e a
+linguem phython. Ele é reponsável po ler todo o script .py;
+O bgcolor é cor de fundo do webapp;
+Abaixo do script a linguagem é em python e retorna a função de execução do jogo.
+
+
+- Abra o arquivo <vi /usuario/dev/mega/src/bottle_app.py>
+Aplicar a rota de leitura do arquivo <..src/index.html> que retorna o vitollino
+e o jogo para uma página web.
+Adicione o seguinte script de rota:
+<
+@route('/')
+def hello_world():
+    return static_file('index.html', root='/home/usuario/dev/mega/src/', mimetype='text/html')
+>
+- A página web é atualizada pelo /webapps do pythonanywhere.
+Verifica que a rota possui a alteração da cor de fundo, mudança de títuo porém
+não abre o jogo. O console da página do site retorna o problema
+No module named quarto. Logo a rota não está encontrado o arquivo quarto.py.
+
+Solução:
+- Abra o arquivo <vi /usuario/dev/mega/src/bottle_app.py>
+Aplicar a rota de leitura do arquivo <..src/_qualquer_nome_.py> para encontrar
+o scrip do jogo.
+Adicione o seguinte script de rota:
+<
+@route('/<filename:re:.*\.py>')
+def py_mundo(filename):
+    return static_file(filename, root='/home/resquinelato/dev/mega/src/', mimetype='text/python')
+>
+- A página web é atualizada pelo /webapps do pythonanywhere.
+Verifica que a rota apresenta o mesmo layout, porém o console retorna problemas
+diferentes. Error 404 ... not found .../__init_.py. No module named vitollino.
+
+Solução:
+- Crie o arquivo <touch usuario/dev/mega/src/vitollino/__init__.py> vazio.
+Este arquivo para o Brython indica que aquilo é um módulo.
+- A página web é atualizada pelo /webapps do pythonanywhere.
+
+
+  :Documentação do jogo quarto:
+
+
+- Abra o aquivo <vi /dev/mega/docs/source/index.rst>.
+A auto-documenentação do arquivo pode ser executada pela extensão
+<.. automodule::>, escrita no <index.rst> para ler todo comentário
+interno ao script <quarto.py> que esteja entre seis aspas <"""documento""">.
+A escritra lida deve estar também na linguagem reStructuredText.
+Para documentar o Modulo Quarto adicionar o seguinte script:
+<
+Modulo Quarto
+-------------
+
+.. note::
+   Jogo do Quarto traduzido do Superpython.
+
+.. automodule:: quarto
+   :members:
+   :undoc-members:
+   :platform: Web
+   :synopsis: Jogo do quarto.
+>
+O quarto do <.. automodule::> é exatamente o arquivo <quarto.py>
+
+- No dir <cd home/usuario/dev/mega/docs/> gere o html <make html>
+Para gerar a página de documentação posterior a alteralçao do arquivo
+<index.srt> é necessário chamar o <make html> no console.
+O console retorna o erro No module named browser.
+
+Tentativa de solução:
+- No dir <cd home/usuario/dev/mega/docs/> instalar o Brython
+<pip intall bowser --user>
+Em seguida gerar o html <make html>, retorna mesmo erro anterior:
+
+Solução:
+- No dir <cd /home/usuario/dev/mega/src/> copiar o dir
+<cp -r  ../../patricia/mockbrython/ .>
+<mockbrython/_broser.py> possui a biblioteca MagickMock em que é possivel fingir
+que existe algum módulo dentro do script. Ele retorna a existencia de algo que
+não tem nada. Eficiente para reduzir problemas de compilação.
+Ainda precisa ser lido <pelo conf.py>
+
+
+- Abrir aquivo <vi /home/usuario/dev/mega/docs/source/conf.py>
+Inserir o caminho até o mockbrython dentro do <conf.py> na região Path setup.
+Adicionar o script:
+<
+sys.path.insert(0, os.path.abspath('../../src/mockbrython/'))
+>
+- No dir <cd /home/usuario/dev/mega/docs/> gerar o html <make html>
+- A página web é atualizada pelo /webapps do pythonanywhere.
+
+
+   :Documentação do vitollino:
+
+- Abra o arquivo <vi home/usuario/dev/mega/docs/source/index.rst>
+Adicione o automodulo dos vitollino como seguinte script:
+<
+Modulo Vitollino
+----------------
+
+.. note::
+   Engenho de jogos do Superpython
+
+.. automodule:: vitollino.main
+   :members:
+   :undoc-members:
+   :platform: Web
+   :synopsis: Engenho de Jogos
+>
+
+
+- No dir <cd home/usuario/dev/mega/docs/> gere o html <make html>
+Há o retorno de vários erros, sendo um deles a falta da extensão <.. doctest ::>
+Unknown directive type "doctest".
+
+Solução:
+- Abrir arquivo <vi home/usuario/dev/mega/docs/source/conf.py>
+Adicionar na lista <extensions = ['sphinx.ext.doctest']>
+
+
+- No dir <cd home/usuario/dev/mega/docs/> gere o html <make html>
+Erro de doctest solucionado.
+Retorna um erro de docstring no vitollino. COMO SOLUCIONAR?
