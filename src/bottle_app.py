@@ -23,6 +23,12 @@ def hello_world():
     """
     return static_file('index.html', root='/home/resquinelato/dev/mega/src/', mimetype='text/html')
 
+@route('/lab')
+def lab_world():
+    """Roteia o Labirinto de barro.
+    """
+    return static_file('lab.html', root='/home/resquinelato/dev/mega/src/', mimetype='text/html')
+
 @route('/oi')
 def oi_mundo():
     """Roteia o ensaio de uma nova rota.
