@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 # mega.main.py
 # SPDX-License-Identifier: GPL-3.0-or-later
-""" Tutorial Dois - Brincando de git.
+""" 
+Tutorial Dois - Brincando de git.
+
 .. codeauthor:: Rodrigo Esquinelato <resquinelato@gmail.com>
 
 - Como criar um repositório no github
@@ -16,7 +18,9 @@ Classes neste modulo:
 
 Changelog
 ---------
+
 .. versionadded::    20.07
+
         Documentação do tutorial.
 """
 
